@@ -1,0 +1,8 @@
+AllCops:
+  Exclude:
+    - 'Gemfile'
+    - 'db/**/*'
+    - 'bin/*'
+    - 'config/environments/*'
+    - 'config/initializers/*'
+    - 'config/spring.rb'
