@@ -1,11 +1,11 @@
 class PostsController < ApplicationController
   def index
-  end  
+  end
   def new
     @post = Post.new
     @tags = Tag.all
   end
-  
+
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
@@ -15,11 +15,16 @@ class PostsController < ApplicationController
       redirect_to posts_path
     else
       render 'new'
-    end  
+    end
   end
-  
+
+  def search
+    @tag = Tag.find(params[:tag_id])
+    @posts = @tag.posts.all
+  end  
+
   private
     def post_params
       params.require(:post).permit(:name, :image, :material, :cooking_time)
-    end  
+    end
 end

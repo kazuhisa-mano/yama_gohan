@@ -20,7 +20,7 @@
       </div>
       <div class="field">
         <%= f.label :調理時間 %>
-        <%= f.text_area :cooking_time %>
+        <%= f.text_area :cooking_time %>分
       </div>
       <div class="field">
         <%= f.label :ジャンル %>
@@ -31,5 +31,8 @@
   </div>
   <div class="tag-list">
     <h3>タグリスト</h3>
+    <% @tags.each do |tag| %>
+      <%= link_to tag.tag_name, tag_posts_path(tag_id: tag.id) %>(<%= tag.posts.count %>)
+    <% end %>
   </div>
 </div>
