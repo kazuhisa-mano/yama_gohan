@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>YamaGohan</title>
+    <title>私の山ごはん</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,6 +10,25 @@
   </head>
 
   <body>
-    <%= yield %>
+    <header>
+      <div class="header-contents">
+        <h2>
+          <%= link_to root_path do %>
+            私の山ごはん
+          <% end %>
+        </h2>
+      </div>
+      <nav>
+        <ul class="nav-list">
+          <li><%= link_to "新規登録", new_user_registration_path %></li>
+          <li><%= link_to "ログイン", new_user_session_path %></li>
+          <li><%= link_to "山ごはん一覧", "#" %></li>
+          <li><%= link_to "ジャンル一覧", "#" %></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <%= yield %>
+    </main>
   </body>
 </html>
