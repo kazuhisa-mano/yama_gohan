@@ -21,10 +21,10 @@ class PostsController < ApplicationController
   def search
     @tag = Tag.find(params[:tag_id])
     @posts = @tag.posts.all
-  end  
+  end
 
   private
     def post_params
-      params.require(:post).permit(:name, :image, :material, :cooking_time)
+      params.require(:post).permit(:name, :image, :material, :recipe, :cooking_time)
     end
 end

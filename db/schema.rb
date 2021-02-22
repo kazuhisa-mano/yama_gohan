@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_21_104147) do
+ActiveRecord::Schema.define(version: 2021_02_22_120837) do
 
   create_table "posts", force: :cascade do |t|
-    t.string "user_id"
+    t.integer "user_id"
     t.string "name"
-    t.integer "image_id"
+    t.string "image_id"
     t.text "material"
     t.text "recipe"
     t.integer "cooking_time"
@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 2021_02_21_104147) do
     t.datetime "remember_created_at"
     t.string "name"
     t.text "introduction"
-    t.integer "profile_image_id"
+    t.string "profile_image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true

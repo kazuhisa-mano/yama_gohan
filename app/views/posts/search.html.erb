@@ -1,7 +1,9 @@
 <h3>"<%= @tag.tag_name %>"山ごはん</h3>
 
 <% @posts.each do |post| %>
-  <%= attachment_image_tag post, :image, size: "350x250", format: 'jpeg', fallback: "no_image.jpg" %>
-  <%= post.name %>
-  <%= post.cooking_time %>分
+  <div>
+    <%= attachment_image_tag post, :image, format: 'jpeg', size: "350x250", fallback: "no_image.jpg" %>
+    <%= post.name %>
+    <%= post.cooking_time %>分
+  </div>
 <% end %>
