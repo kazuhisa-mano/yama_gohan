@@ -1,0 +1,14 @@
+<h3>投稿詳細</h3>
+
+<div>
+  <%= attachment_image_tag @post, :image, format: 'jpeg', size: "350x250", fallback: "no_image.jpg" %>
+  <%= @post.name %>
+  <%= @post.material %>
+  <%= @post.recipe %>
+  <%= @post.cooking_time %>分
+  <%#= @post.tag.tag_name %>
+</div>
+<% if @post.user == current_user %>
+  <%= link_to "編集", edit_post_path(@post.id) %>
+  <%= link_to "削除", post_path(@post.id), method: :delete %>
+<% end %>  

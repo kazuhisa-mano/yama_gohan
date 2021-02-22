@@ -2,8 +2,11 @@
 
 <% @posts.each do |post| %>
   <div>
-    <%= attachment_image_tag post, :image, format: 'jpeg', size: "350x250", fallback: "no_image.jpg" %>
+    <%= link_to post_path(post.id) do %>
+      <%= attachment_image_tag post, :image, format: 'jpeg', size: "350x250", fallback: "no_image.jpg" %>
+    <% end %>
     <%= post.name %>
     <%= post.cooking_time %>分
+    posted by<%= post.user.name %>
   </div>
 <% end %>
