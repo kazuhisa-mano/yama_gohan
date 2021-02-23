@@ -1,6 +1,6 @@
 <div class="contents">
+  <h3>新規投稿</h3>
   <div class="form">
-    <h3>新規投稿</h3>
     <%=form_with(model: @post, url:posts_path, local: true) do |f| %>
       <div class="field">
         <%= f.label :"料理画像" %>
@@ -23,12 +23,13 @@
         <%= f.text_area :cooking_time %>分
       </div>
       <div class="field">
-        <%= f.label :"ジャンル" %>
+        <%= f.label :"タグ" %>
         <%= f.text_area :tag_name %>
       </div>
-        <%= f.submit %>
+      <%= f.submit %>
     <% end %>
   </div>
+  
   <div class="tag-list">
     <h3>タグリスト</h3>
     <% @tags.each do |tag| %>

@@ -1,7 +1,9 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :search, :show]
   def index
     @posts = Post.all
   end
+
   def new
     @post = Post.new
     @tags = Tag.all
@@ -23,23 +25,33 @@ class PostsController < ApplicationController
     @tag = Tag.find(params[:tag_id])
     @posts = @tag.posts.all
   end
-  
+
   def show
     @post = Post.find(params[:id])
   end
-  
+
   def edit
     @post = Post.find(params[:id])
+    # @tag_list = @post.tags.pluck(:tag_name)
+    @tags = Tag.all
   end
-  
+
   def update
+    @post = Post.find(params[:id])
+    tag_list = params[:post][:tag_name].split(nil)
+    if @post.update(post_params)
+      @post.save_tag(tag_list)
+      redirect_to post_path(@post.id)
+    else
+      render 'edit'
+    end  
   end
-  
+
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
     redirect_to posts_path
-  end  
+  end
 
   private
     def post_params
