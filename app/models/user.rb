@@ -6,4 +6,7 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   validates :name, presence: true
   attachment :profile_image
+  
+  attr_accessor :current_password
+  
 end
