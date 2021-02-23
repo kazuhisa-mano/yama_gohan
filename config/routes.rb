@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'favorites/create'
+  get 'favorites/destroy'
   root 'homes#top'
 
   devise_for :users, controllers: {registrations: 'users/registrations'}
@@ -6,8 +8,9 @@ Rails.application.routes.draw do
 
   resources :posts do
     resources :post_comments, only: [:create, :destroy]
-  end  
-  
+    resource :favorites, only: [:create, :destroy]
+  end
+
   resources :tags do
     get 'posts' => 'posts#search'
   end

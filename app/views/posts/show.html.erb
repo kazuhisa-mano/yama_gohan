@@ -12,6 +12,24 @@
     <%= link_to "編集", edit_post_path(@post.id) %>
     <%= link_to "削除", post_path(@post.id), method: :delete %>
   <% end %>
+  
+  <!--いいねボタン-->
+    <% if current_user.already_favorited?(@post) %>
+    <li>
+      <%= link_to post_favorites_path(@post), method: :delete do %>
+        <i class="fas fa-heart"></i>
+      <% end %>
+      <%= @post.favorites.count %>いいね
+    </li>
+    <% else %>
+    <li>
+      <%= link_to post_favorites_path(@post), method: :post do %>
+        <i class="far fa-heart"></i>
+      <% end %>
+      <%= @post.favorites.count %>いいね
+    </li>
+    <% end %>
+    <!--いいねボタン-->
 
   <div class="comment">
     <p>コメント</p>
