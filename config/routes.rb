@@ -4,8 +4,10 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {registrations: 'users/registrations'}
   resources :users, only: [:show, :edit]
 
-  resources :posts
-
+  resources :posts do
+    resources :post_comments, only: [:create, :destroy]
+  end  
+  
   resources :tags do
     get 'posts' => 'posts#search'
   end

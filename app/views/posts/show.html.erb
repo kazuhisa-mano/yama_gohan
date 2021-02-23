@@ -12,4 +12,22 @@
     <%= link_to "編集", edit_post_path(@post.id) %>
     <%= link_to "削除", post_path(@post.id), method: :delete %>
   <% end %>
+
+  <div class="comment">
+    <p>コメント</p>
+    <% @post_comments.each do |post_comment| %>
+      <%= post_comment.user.name %>
+      <%= post_comment.comment %>
+      <% if post_comment.user == current_user %>
+        <%= link_to "削除", post_post_comment_path(@post, post_comment), method: :delete %>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="comment-form">
+    <%= form_with(model:[@post, @post_comment], url:post_post_comments_path(@post.id), local: true) do |f| %>
+      <%= f.text_area :comment, placeholder: "コメントを入力" %>
+      <%= f.submit "送信する" %>
+    <% end %>
+  </div>
+
 </div>

@@ -2,6 +2,7 @@ class Post < ApplicationRecord
   belongs_to :user
   has_many :tag_maps, dependent: :destroy
   has_many :tags, through: :tag_maps
+  has_many :post_comments, dependent: :destroy
 
   attachment :image
 
