@@ -1,15 +1,39 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>YamaGohan</title>
+    <title>私の山ごはん</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+    <header class="page-header">
+      <h2 class="logo">
+        <%= link_to root_path do %>
+          私の山ごはん
+        <% end %>
+      </h2>
+      <nav>
+        <ul class="main-nav">
+          <% if user_signed_in? %>
+            <li><%= link_to "新規投稿", new_post_path %></li>
+            <li><%= link_to "マイページ", user_path(current_user.id) %></li>
+            <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+            <li><%= link_to "山ごはん一覧", posts_path %></li>
+          <% else %>
+            <li><%= link_to "新規登録", new_user_registration_path %></li>
+            <li><%= link_to "ログイン", new_user_session_path %></li>
+            <li><%= link_to "山ごはん一覧", posts_path %></li>
+          <% end %>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <%= yield %>
+    </main>
   </body>
+
 </html>

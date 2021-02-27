@@ -1,0 +1,39 @@
+<div class="content">
+  <h3>投稿編集</h3>
+  <div class="form">
+    <%= form_with(model: @post, url: post_path(@post.id), local:true) do |f| %>
+      <div class="field">
+        <%= f.label :"料理画像" %>
+        <%= f.attachment_field :image %>
+      </div>
+      <div class="field">
+        <%= f.label :"料理名" %>
+        <%= f.text_area :name %>
+      </div>
+      <div class="field">
+        <%= f.label :"作り方" %>
+        <%= f.text_area :recipe %>
+      </div>
+      <div class="field">
+        <%= f.label :"材料" %>
+        <%= f.text_area :material %>
+      </div>
+      <div class="field">
+        <%= f.label :"調理時間" %>
+        <%= f.text_area :cooking_time %>分
+      </div>
+      <div class="field">
+        <%= f.label :"タグ" %>
+        <%= f.text_area :tag_name %>
+      </div>
+      <%= f.submit %>
+    <% end %>
+  </div>
+
+  <div class="tag-list">
+    <h3>タグリスト</h3>
+    <% @tags.each do |tag| %>
+      <%= link_to tag.tag_name, tag_posts_path(tag_id: tag.id) %>(<%= tag.posts.count %>)
+    <% end %>
+  </div>
+</div>

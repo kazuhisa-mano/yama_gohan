@@ -1,0 +1,22 @@
+// Place all the styles related to the Homes controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+main {
+  text-align: center;
+}
+
+.home-content {
+  background-image: image-url("background_image_5.JPG");
+  height: 500px;
+  background-size: cover;
+  background-position: center;
+}
+
+.home-content h2, p {
+  color: white;
+}
+
+.new-post {
+  margin-top: 30px;
+}
