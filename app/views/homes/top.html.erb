@@ -8,8 +8,8 @@
 <div class="tag-list">
   <h2>タグリスト</h2>
   <% @tags.each do |tag| %>
-      <%= link_to tag.tag_name, tag_posts_path(tag_id: tag.id) %>(<%= tag.posts.count %>)
-    <% end %>
+    <%= link_to tag.tag_name, tag_posts_path(tag_id: tag.id) %>(<%= tag.posts.count %>)
+  <% end %>
 </div>
 
 <div class="new-post">
