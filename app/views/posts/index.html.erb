@@ -6,22 +6,23 @@
     <% end %>
     <%= post.name %>
     <%= post.cooking_time %>分
+
     <!--いいねボタン-->
-    <% if current_user.already_favorited?(post) %>
-    <li>
-      <%= link_to post_favorites_path(post), method: :delete do %>
-        <i class="fas fa-heart"></i>
-      <% end %>
-      <%= post.favorites.count %>いいね
-    </li>
-    <% else %>
-    <li>
-      <%= link_to post_favorites_path(post), method: :post do %>
-        <i class="far fa-heart"></i>
-      <% end %>
-      <%= post.favorites.count %>いいね
-    </li>
-    <% end %>
+    <!--<%# if current_user.already_favorited?(post) %>-->
+    <!--<li>-->
+    <!--  <%#= link_to post_favorites_path(post), method: :delete do %>-->
+    <!--    <i class="fas fa-heart"></i>-->
+    <!--  <%# end %>-->
+    <!--  <%#= post.favorites.count %>いいね-->
+    <!--</li>-->
+    <!--<%# else %>-->
+    <!--<li>-->
+    <!--  <%#= link_to post_favorites_path(post), method: :post do %>-->
+    <!--    <i class="far fa-heart"></i>-->
+    <!--  <%# end %>-->
+    <!--  <%#= post.favorites.count %>いいね-->
+    <!--</li>-->
+    <!--<%# end %>-->
     <!--いいねボタン-->
   </div>
 <% end %>

@@ -12,23 +12,23 @@
     <%= link_to "編集", edit_post_path(@post.id) %>
     <%= link_to "削除", post_path(@post.id), method: :delete %>
   <% end %>
-  
+
   <!--いいねボタン-->
-    <% if current_user.already_favorited?(@post) %>
-    <li>
-      <%= link_to post_favorites_path(@post), method: :delete do %>
-        <i class="fas fa-heart"></i>
-      <% end %>
-      <%= @post.favorites.count %>いいね
-    </li>
-    <% else %>
-    <li>
-      <%= link_to post_favorites_path(@post), method: :post do %>
-        <i class="far fa-heart"></i>
-      <% end %>
-      <%= @post.favorites.count %>いいね
-    </li>
-    <% end %>
+    <!--<%# if current_user.already_favorited?(@post) %>-->
+    <!--<li>-->
+    <!--  <%#= link_to post_favorites_path(@post), method: :delete do %>-->
+    <!--    <i class="fas fa-heart"></i>-->
+    <!--  <%# end %>-->
+    <!--  <%#= @post.favorites.count %>いいね-->
+    <!--</li>-->
+    <!--<%# else %>-->
+    <!--<li>-->
+    <!--  <%#= link_to post_favorites_path(@post), method: :post do %>-->
+    <!--    <i class="far fa-heart"></i>-->
+    <!--  <%# end %>-->
+    <!--  <%#= @post.favorites.count %>いいね-->
+    <!--</li>-->
+    <!--<%# end %>-->
     <!--いいねボタン-->
 
   <div class="comment">
@@ -41,6 +41,7 @@
       <% end %>
     <% end %>
   </div>
+
   <div class="comment-form">
     <%= form_with(model:[@post, @post_comment], url:post_post_comments_path(@post.id), local: true) do |f| %>
       <%= f.text_area :comment, placeholder: "コメントを入力" %>
