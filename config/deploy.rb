@@ -5,7 +5,7 @@ set :application, "yama_gohan"
 set :repo_url, "git@github.com:kazuhisa-mano/yama_gohan.git"
 
 set :deploy_to, "/home/ec2-user/yama_gohan"
-set :rbenv_ruby, '2.5.7'
+set :rbenv_ruby, '2.6.3'
 set :linked_files, %w{config/master.key .env}
 append :linked_dirs, "log", "public", "tmp"
 
