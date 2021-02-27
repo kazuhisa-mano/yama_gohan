@@ -2,14 +2,14 @@
   <div class="text">
     <h2>山ごはんはコレで決まり</h2>
     <p>登山での食事に悩んでいるあなたへ贈る、山ごはん投稿サイト</p>
-  </div>  
+  </div>
 </div>
 
 <div class="tag-list">
-  <h3>タグリスト</h3>
+  <h2>タグリスト</h2>
   <% @tags.each do |tag| %>
-      <%= link_to tag.tag_name, tag_posts_path(tag_id: tag.id) %>(<%= tag.posts.count %>)
-    <% end %>
+    <%= link_to tag.tag_name, tag_posts_path(tag_id: tag.id) %>(<%= tag.posts.count %>)
+  <% end %>
 </div>
 
 <div class="new-post">
