@@ -5,6 +5,13 @@
   </div>  
 </div>
 
+<div class="tag-list">
+  <h3>タグリスト</h3>
+  <% @tags.each do |tag| %>
+      <%= link_to tag.tag_name, tag_posts_path(tag_id: tag.id) %>(<%= tag.posts.count %>)
+    <% end %>
+</div>
+
 <div class="new-post">
   <h2>最近の投稿</h2>
 </div>
