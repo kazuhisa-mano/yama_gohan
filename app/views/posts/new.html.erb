@@ -1,39 +1,39 @@
-<div class="contents">
-  <h3>新規投稿</h3>
-  <div class="form">
-    <%=form_with(model: @post, url:posts_path, local: true) do |f| %>
-      <div class="field">
-        <%= f.label :"料理画像" %>
-        <%= f.attachment_field :image %>
-      </div>
-      <div class="field">
-        <%= f.label :"料理名" %>
-        <%= f.text_area :name %>
-      </div>
-      <div class="field">
-        <%= f.label :"作り方" %>
-        <%= f.text_area :recipe %>
-      </div>
-      <div class="field">
-        <%= f.label :"材料" %>
-        <%= f.text_area :material %>
-      </div>
-      <div class="field">
-        <%= f.label :"調理時間" %>
-        <%= f.text_area :cooking_time %>分
-      </div>
-      <div class="field">
-        <%= f.label :"タグ" %>
-        <%= f.text_area :tag_name %>
-      </div>
-      <%= f.submit %>
-    <% end %>
-  </div>
-  
-  <div class="tag-list">
-    <h3>タグリスト</h3>
-    <% @tags.each do |tag| %>
-      <%= link_to tag.tag_name, tag_posts_path(tag_id: tag.id) %>(<%= tag.posts.count %>)
-    <% end %>
-  </div>
+<h2>新規投稿</h2>
+<div class="form">
+  <%=form_with(model: @post, url:posts_path, local: true) do |f| %>
+    <div class="field">
+      <%= f.label :"料理画像" %></br>
+      <%= f.attachment_field :image %>
+    </div>
+    <div class="field">
+      <%= f.label :"料理名" %></br>
+      <%= f.text_field :name %>
+    </div>
+    <div class="field">
+      <%= f.label :"作り方" %></br>
+      <%= f.text_area :recipe %>
+    </div>
+    <div class="field">
+      <%= f.label :"材料" %></br>
+      <%= f.text_area :material %>
+    </div>
+    <div class="field">
+      <%= f.label :"調理時間" %></br>
+      <%= f.number_field :cooking_time %>分
+    </div>
+    <div class="field">
+      <%= f.label :"タグ" %></br>
+      <%= f.text_area :tag_name %>
+    </div>
+    <%= f.submit "投稿", class:"btn btn-lg btn-block btn-base-1 mt-20" %>
+  <% end %>
 </div>
+
+<div class="tag-list">
+  <h2>タグリスト</h2>
+  <h3>
+  <% @tags.each do |tag| %>
+    <%= link_to tag.tag_name, tag_posts_path(tag_id: tag.id) %>(<%= tag.posts.count %>)
+  <% end %>
+  </h3>
+  </div>

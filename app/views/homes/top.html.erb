@@ -1,15 +1,16 @@
 <div class="home-content">
   <div class="text">
-    <h2>山ごはんはコレで決まり</h2>
-    <p>登山での食事に悩んでいるあなたへ贈る、山ごはん投稿サイト</p>
+    <h2>真似したい、真似できる山ごはんレシピが満載</h2>
   </div>
 </div>
 
 <div class="tag-list">
   <h2>タグリスト</h2>
-  <% @tags.each do |tag| %>
-    <%= link_to tag.tag_name, tag_posts_path(tag_id: tag.id) %>(<%= tag.posts.count %>)
-  <% end %>
+  <h3>
+    <% @tags.each do |tag| %>
+      <%= link_to tag.tag_name, tag_posts_path(tag_id: tag.id) %>(<%= tag.posts.count %>)
+    <% end %>
+  </h3>
 </div>
 
 <!--<div class="new-post">-->
