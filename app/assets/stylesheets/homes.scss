@@ -2,25 +2,28 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-main {
-  text-align: center;
-}
+
 
 .home-content {
   background-image: image-url("background_image_5.JPG");
-  height: 500px;
   background-size: cover;
   background-position: center;
+  // background-repeat: no-repeat;
+  height: 500px;
+  // line-height: 400px;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .home-content h2, p {
   color: white;
 }
 
-.new-post {
+.tag-list {
   margin-top: 30px;
+  // border-bottom: solid;
+  // border-top: solid;
 }
 
-// .tag-list {
-//   // border-bottom: solid;
+// .new-post {
+//   margin-top: 30px;
 // }
