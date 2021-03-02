@@ -2,8 +2,19 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
+// new.html.erb
 .field {
   padding: 15px 0;
   font-weight: bold;
+}
+
+// index.html.erb
+.container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.item {
+  margin: 10px;
 }
