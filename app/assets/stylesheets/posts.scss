@@ -2,7 +2,25 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
+// new.html.erb, edit.html.erb
 .field {
-  margin-bottom: 10px;
+  padding: 15px 0;
+  font-weight: bold;
+}
+
+// index.html.erb, serch.html.erb
+.container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.item {
+  margin: 10px;
+}
+
+// show.html.erb
+
+.show-field {
+  padding: 10px 0;
+  // text-align: left;
 }

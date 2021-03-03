@@ -7,26 +7,26 @@
     </div>
     <div class="field">
       <%= f.label :"料理名" %></br>
-      <%= f.text_field :name %>
-    </div>
-    <div class="field">
-      <%= f.label :"作り方" %></br>
-      <%= f.text_area :recipe %>
+      <%= f.text_field :name, size: "30×10" %>
     </div>
     <div class="field">
       <%= f.label :"材料" %></br>
-      <%= f.text_area :material %>
+      <%= f.text_area :material, size: "40×40" %>
+    </div>
+    <div class="field">
+      <%= f.label :"作り方" %></br>
+      <%= f.text_area :recipe, size: "40×40" %>
     </div>
     <div class="field">
       <%= f.label :"調理時間" %></br>
-      <%= f.number_field :cooking_time %>分
+      <%= f.number_field :cooking_time, size: "30×10", placeholder: "半角数字を入力" %>分
     </div>
     <div class="field">
       <%= f.label :"タグ" %></br>
-      <%= f.text_area :tag_name %>
+      <%= f.text_area :tag_name, size: "40×10", placeholder: "例：日帰り向け 縦走向け 時短 こだわり" %></br>
+      <%= f.submit "投稿する" %>
+    <% end %>
     </div>
-    <%= f.submit "投稿", class:"btn btn-lg btn-block btn-base-1 mt-20" %>
-  <% end %>
 </div>
 
 <div class="tag-list">
