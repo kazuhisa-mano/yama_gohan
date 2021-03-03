@@ -6,6 +6,7 @@
         <%= attachment_image_tag post, :image, format: 'jpeg', size:"300x250", fallback: "no_image.jpg" %></br>
       <% end %>
       <p><%= post.name %></p>
+      
     <!--いいねボタン-->
     <!--<%# if current_user.already_favorited?(post) %>-->
     <!--<li>-->
