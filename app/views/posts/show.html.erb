@@ -1,61 +1,68 @@
-<h2>投稿詳細</h2>
 <div class="show">
-  <div class="show-field">
-    <%= attachment_image_tag @post, :image, format: 'jpeg', size: "350x250", fallback: "no_image.jpg" %></br>
+  <h2>投稿詳細</h2>
+  <div class="img-field">
+    <p><%= attachment_image_tag @post, :image, format: 'jpeg', size: "350x250", fallback: "no_image.jpg" %></br></p>
   </div>
   <div class="show-field">
-    <%= @post.name %>
+    <span class="title">料理名</span>
+    <p><%= @post.name %></p>
   </div>
   <div class="show-field">
-    <%= simple_format(@post.material) %>
+    <span class="title">材料</span>
+    <p><%= simple_format(@post.material) %></p>
   </div>
   <div class="show-field">
-    <%= simple_format(@post.recipe) %>分
+    <span class="title">作り方</span>
+    <p><%= simple_format(@post.recipe) %></p>
   </div>
   <div class="show-field">
-    <%= @post.cooking_time %>分
+    <span class="title">調理時間</span>
+    <p><%= @post.cooking_time %>分</p>
   </div>
   <div class="show-field">
-    <%= @post.tags.pluck(:tag_name) %>
-  </div>  
-</div>
-<% if @post.user == current_user %>
-  <%= link_to "編集", edit_post_path(@post.id) %>
-  <%= link_to "削除", post_path(@post.id), method: :delete %>
-<% end %>
+    <span class="title">ジャンル</span>
+    <p><%= @post.tags.pluck(:tag_name) %></p>
+  </div>
 
-<!--いいねボタン-->
-  <!--<%# if current_user.already_favorited?(@post) %>-->
-  <!--<li>-->
-  <!--  <%#= link_to post_favorites_path(@post), method: :delete do %>-->
-  <!--    <i class="fas fa-heart"></i>-->
-  <!--  <%# end %>-->
-  <!--  <%#= @post.favorites.count %>いいね-->
-  <!--</li>-->
-  <!--<%# else %>-->
-  <!--<li>-->
-  <!--  <%#= link_to post_favorites_path(@post), method: :post do %>-->
-  <!--    <i class="far fa-heart"></i>-->
-  <!--  <%# end %>-->
-  <!--  <%#= @post.favorites.count %>いいね-->
-  <!--</li>-->
-  <!--<%# end %>-->
-<!--いいねボタン-->
+  <% if @post.user == current_user %>
+    <%= link_to "編集", edit_post_path(@post.id) %>
+    <%= link_to "削除", post_path(@post.id), method: :delete %>
+  <% end %>
 
-<div class="comment">
-  <p>コメント</p>
-  <% @post_comments.each do |post_comment| %>
-    <%= post_comment.user.name %>
-    <%= post_comment.comment %>
-    <% if post_comment.user == current_user %>
-      <%= link_to "削除", post_post_comment_path(@post, post_comment), method: :delete %>
+  <!--いいねボタン-->
+    <!--<%# if current_user.already_favorited?(@post) %>-->
+    <!--<li>-->
+    <!--  <%#= link_to post_favorites_path(@post), method: :delete do %>-->
+    <!--    <i class="fas fa-heart"></i>-->
+    <!--  <%# end %>-->
+    <!--  <%#= @post.favorites.count %>いいね-->
+    <!--</li>-->
+    <!--<%# else %>-->
+    <!--<li>-->
+    <!--  <%#= link_to post_favorites_path(@post), method: :post do %>-->
+    <!--    <i class="far fa-heart"></i>-->
+    <!--  <%# end %>-->
+    <!--  <%#= @post.favorites.count %>いいね-->
+    <!--</li>-->
+    <!--<%# end %>-->
+  <!--いいねボタン-->
+
+  <div class="comment">
+    <p>コメント</p>
+    <% @post_comments.each do |post_comment| %>
+      <%= post_comment.user.name %>
+      <%= post_comment.comment %>
+      <% if post_comment.user == current_user %>
+        <%= link_to "削除", post_post_comment_path(@post, post_comment), method: :delete %>
+      <% end %>
     <% end %>
-  <% end %>
-</div>
+  </div>
 
-<div class="comment-form">
-  <%= form_with(model:[@post, @post_comment], url:post_post_comments_path(@post.id), local: true) do |f| %>
-    <%= f.text_area :comment, placeholder: "コメントを入力" %>
-    <%= f.submit "送信する" %>
-  <% end %>
+  <div class="comment-form">
+    <%= form_with(model:[@post, @post_comment], url:post_post_comments_path(@post.id), local: true) do |f| %>
+      <%= f.text_area :comment, placeholder: "コメントを入力" %>
+      <%= f.submit "送信する" %>
+    <% end %>
+  </div>
+
 </div>
