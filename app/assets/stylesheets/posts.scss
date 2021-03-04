@@ -20,7 +20,28 @@
 
 // show.html.erb
 
+.show {
+  margin: 0 auto;
+  width: 80%;
+  text-align: left;
+}
+
 .show-field {
-  padding: 10px 0;
-  // text-align: left;
+  margin: 20px 0;
+  position: relative;
+  padding: 0.5em 1em;
+  border: solid 2px #C0C0C0;
+  border-radius: 8px;
+}
+
+.show-field .title {
+  position: absolute;
+  display: inline-block;
+  top: -13px;
+  left: 10px;
+  padding: 0 9px;
+  line-height: 1;
+  font-size: 19px;
+  background: #FFF;
+  font-weight: bold;
 }
