@@ -30,6 +30,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post_comment = PostComment.new
     @post_comments = @post.post_comments
+    @post_tags = @post.tags
   end
 
   def edit

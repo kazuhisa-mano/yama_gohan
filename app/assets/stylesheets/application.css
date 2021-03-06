@@ -43,10 +43,32 @@ main {
   margin-top: 10px;
 }
 
+.button {
+  display       : inline-block;
+  border-radius : 20%;          /* 角丸       */
+  font-size     : 12pt;        /* 文字サイズ */
+  text-align    : center;      /* 文字位置   */
+  cursor        : pointer;     /* カーソル   */
+  padding       : 10px 10px;   /* 余白       */
+  margin        : 5px;
+  color         : #000000;     /* 文字色     */
+  line-height   : 1em;         /* 1行の高さ  */
+  transition    : .3s;         /* なめらか変化 */
+  box-shadow    : 3px 3px 1.5px #666666;  /* 影の設定 */
+  border        : 2px solid #C0C0C0;    /* 枠の指定 */
+  font-weight   : bold;
+}
+
+.button:hover {
+  box-shadow    : none;        /* カーソル時の影消去 */
+  color         : #ffffff;     /* 背景色     */
+  background    : #4682b4;     /* 文字色     */
+}
+
 @media (max-width: 700px) {
   .page-header {
     flex-direction: column;
-    align-items: center;
+    align-items   : center;
   }
 }
 

@@ -1,11 +1,17 @@
-<div class="content">
-  <h3>マイページ</h3>
-  <div class="form">
-    <%= attachment_image_tag @user, :profile_image, format: 'jpeg', size: "250x250", fallback: "no_image.jpg" %>
-    <%= @user.name %>
-    <%= @user.introduction %>
+<div class="show">
+  <h2>マイページ</h2>
+  <div class="img-field">
+    <p><%= attachment_image_tag @user, :profile_image, format: 'jpeg', class:"profile-image", size: "150x150", fallback: "no_image.jpg" %></p>
+  </div>
+  <div class="show-field">
+    <span class="title">ユーザー名</span>
+    <p><%= @user.name %></p>
+  </div>
+  <div class="show-field">
+    <span class="title">自己紹介</span>
+    <p><%= @user.introduction %></p>
   </div>
   <% if @user == current_user %>
-    <%= link_to "編集", edit_user_registration_path(@user) %>
+    <%= link_to "編集", edit_user_registration_path(@user), class:"button" %>
   <% end %>
 </div>
