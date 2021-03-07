@@ -37,6 +37,11 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     # @tag_list = @post.tags.pluck(:tag_name)
     @tags = Tag.all
+    if @post.user == current_user
+      render "edit"
+    else
+      redirect_to posts_path
+    end  
   end
 
   def update
@@ -52,8 +57,12 @@ class PostsController < ApplicationController
 
   def destroy
     @post = Post.find(params[:id])
-    @post.destroy
-    redirect_to posts_path
+    if @post.user == current_user
+      @post.destroy
+      redirect_to posts_path
+    else
+      redirect_to post_path(@post.id)
+    end
   end
 
   private
