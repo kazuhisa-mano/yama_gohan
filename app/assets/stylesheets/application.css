@@ -19,6 +19,7 @@
   box-sizing: border-box;
   font-family: serif;
   text-decoration: none;
+  list-style: none;
 }
 
 .page-header {
@@ -31,7 +32,6 @@
 
 .main-nav {
   display: flex;
-  list-style: none;
 }
 
 .main-nav li {
