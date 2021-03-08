@@ -32,32 +32,48 @@
   <% end %>
 
   <!--いいねボタン-->
-    <!--<%# if current_user.already_favorited?(@post) %>-->
-    <!--<li>-->
-    <!--  <%#= link_to post_favorites_path(@post), method: :delete do %>-->
-    <!--    <i class="fas fa-heart"></i>-->
-    <!--  <%# end %>-->
-    <!--  <%#= @post.favorites.count %>いいね-->
-    <!--</li>-->
-    <!--<%# else %>-->
-    <!--<li>-->
-    <!--  <%#= link_to post_favorites_path(@post), method: :post do %>-->
-    <!--    <i class="far fa-heart"></i>-->
-    <!--  <%# end %>-->
-    <!--  <%#= @post.favorites.count %>いいね-->
-    <!--</li>-->
-    <!--<%# end %>-->
+    <% if user_signed_in? %>
+      <% if current_user.already_favorited?(@post) %>
+      <li>
+        <%= link_to post_favorites_path(@post), method: :delete do %>
+          <i class="fas fa-heart"></i>
+        <% end %>
+        <%= @post.favorites.count %>いいね
+      </li>
+      <% else %>
+      <li>
+        <%= link_to post_favorites_path(@post), method: :post do %>
+          <i class="far fa-heart"></i>
+        <% end %>
+        <%= @post.favorites.count %>いいね
+      </li>
+      <% end %>
+    <% end %>
   <!--いいねボタン-->
 
   <div class="comment">
     <h2>コメント</h2>
-    <% @post_comments.each do |post_comment| %>
-      <p><%= post_comment.comment %>
-      <%= post_comment.user.name %>
-      <% if user_signed_in? && post_comment.user == current_user %>
-        <%= link_to "削除", post_post_comment_path(@post, post_comment), method: :delete %>
+    <table border="1" rules="rows">
+      <tr>
+        <th colspan="2" width="200px">投稿者</th>
+        <th width="200px">コメント</th>
+        <th width="100px">日時</th>
+        <th></th>
+      </tr>
+      <% @post_comments.each do |post_comment| %>
+        <tr>
+          <td><%= attachment_image_tag post_comment.user, :profile_image, format: 'jpeg', class:"profile-image", size:"60x60", fallback: "no_image.jpg" %></td>
+          <td><%= post_comment.user.name %></td>
+          <td><%= post_comment.comment %></td>
+          <td><%= post_comment.updated_at.strftime("%Y-%m-%d") %></td>
+          <td>
+            <% if user_signed_in? && post_comment.user == current_user %>
+              <%= link_to "削除", post_post_comment_path(@post, post_comment), method: :delete %>
+            <% end %>
+          </td>
+        </tr>
       <% end %>
-    <% end %>
+    </table>
   </div>
 
   <div class="comment-form">
