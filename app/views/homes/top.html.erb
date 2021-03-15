@@ -1,3 +1,9 @@
+<% if user_signed_in? %>
+  <p>ようこそ！<%= current_user.name %>さん</p>
+<% else %>
+  <p>ようこそ！ゲストさん</p>
+<% end %>
+
 <div class="home-content">
   <div class="text">
     <h2>真似したい、真似できる山ごはんレシピが満載</h2>
