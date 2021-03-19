@@ -7,6 +7,11 @@ class Post < ApplicationRecord
 
   attachment :image
 
+  validates :name, presence: true
+  validates :image, presence: true
+  validates :material, presence: true
+  validates :recipe, presence: true
+
   def save_tag(sent_tags)
     current_tags = self.tags.pluck(:tag_name) unless self.tags.nil? #既存のタグを取得
     old_tags = current_tags - sent_tags
