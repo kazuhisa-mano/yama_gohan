@@ -60,6 +60,7 @@
         <th width="100px">日時</th>
         <th></th>
       </tr>
+
       <% @post_comments.each do |post_comment| %>
         <tr>
           <td><%= attachment_image_tag post_comment.user, :profile_image, format: 'jpeg', class:"profile-image", size:"60x60", fallback: "no_image.jpg" %></td>
@@ -78,6 +79,20 @@
 
   <div class="comment-form">
     <%= form_with(model:[@post, @post_comment], url:post_post_comments_path(@post.id), local: true) do |f| %>
+
+      <!--エラーメッセージ-->
+      <% if @post.errors.any? %>
+        <div id="error_message">
+          <h2><%= pluralize(@post.errors.count, "error") %>prohibited this product from being saved:</h2>
+          <ul>
+            <% @post.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <!--エラーメッセージ-->
+
       <%= f.text_area :comment, size:"40x3", placeholder: "コメントを入力" %></br>
       <%= f.submit "送信する" , class:"button"%>
     <% end %>
