@@ -65,6 +65,11 @@ main {
   background    : #4682b4;     /* 文字色     */
 }
 
+.fa-heart {
+  color :red;
+}
+
+/*レスポンシブ対応*/
 @media (max-width: 700px) {
   .page-header {
     flex-direction: column;

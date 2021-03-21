@@ -9,7 +9,7 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
 
   validates :name, presence: true
-  validates :inroduction, length: {maximum: 100
+  validates :introduction, length: {maximum: 100 }
 
   attachment :profile_image
 
@@ -18,7 +18,7 @@ class User < ApplicationRecord
   def already_favorited?(post)
     self.favorites.exists?(post_id: post.id)
   end
-  
+
   # def already_favorited?(user)
   #   favorites.where(user_id: user.id).exists?
   # end
