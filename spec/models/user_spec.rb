@@ -8,6 +8,7 @@ RSpec.describe User, type: :model do
       end
     end
   end
+
   context "データが正しく保存される" do
     before do
       @user = User.new
@@ -26,27 +27,45 @@ RSpec.describe User, type: :model do
   #   expect(user).not_to be_valid
   # end
 
-  # it 'is invalid without a name' do
-  #   user = User.new(
-  #     name: "",
-  #     email: "rspec@test",
-  #     password: "123456",
-  #     password_confirmation: "123456"
-  #     )
-  #     user.valid?
-  #     expect(user.errors[:name]).to include("を入力してください")
-  # end
+  it "パスワードがない場合は登録できないこと" do
+    user = User.new(
+      id: "1",
+      name: "test",
+      email: "rspec@test",
+      password: "",
+      introduction: "sample",
+      profile_image_id: "1",
+      created_at: "2021-02-28 07:03:14",
+      updated_at: "2021-02-28 07:03:14"
+      )
+      user.valid?
+      expect(user.errors[:password]).to include("can't be blank")
+  end
 
-  # it "is valid with a name, email and password" do
-  #   user = User.new(
-  #     name: "taro",
-  #     email: "rspec@test",
-  #     password: "aaaaaa",
-  #     introduction: "sample",
-  #     profile_image_id: "1",
-  #     created_at: "1",
-  #     updated_at: "1"
-  #     )
-  #     expect(user).to be_vaild
-  # end
+  it "name, email, password, password_confirmationが存在すれば登録できること" do
+    user = User.new(
+      name: "test",
+      email: "rspec@test",
+      password: "123456",
+      password_confirmation: "123456"
+      )
+      expect(user).to be_valid
+  end
+
+  it "password_confirmationがないと登録できない" do
+    user = User.new(
+      id: "1",
+      name: "test",
+      email: "rspec@test",
+      password: "123456",
+      password_confirmation: "",
+      introduction: "sample",
+      profile_image_id: "1",
+      created_at: "2021-02-28 07:03:14",
+      updated_at: "2021-02-28 07:03:14"
+      )
+      user.valid?
+      expect(user.errors[:password_confirmation]).to include("doesn't match Password")
+  end
+
 end
