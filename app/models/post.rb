@@ -11,6 +11,7 @@ class Post < ApplicationRecord
   validates :image, presence: true
   validates :material, presence: true
   validates :recipe, presence: true
+  validates :cooking_time, presence: true
 
   def save_tag(sent_tags)
     current_tags = self.tags.pluck(:tag_name) unless self.tags.nil? #既存のタグを取得
