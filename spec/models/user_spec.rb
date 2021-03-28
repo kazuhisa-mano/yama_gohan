@@ -41,7 +41,8 @@ RSpec.describe User, type: :model do
 
     it "introductionは100文字以下であること" do
       user = User.new(introduction: "a" * 101)
-      expect(user.invalid?).to be true
+      user.invalid?
+      expect(user.errors[:introduction]).to include("is too long (maximum is 100 characters)")
     end
   end
 end
