@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 2021_02_23_112955) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "tag_maps", force: :cascade do |t|
+  # create_table "tag_maps", force: :cascade do |t|
     t.integer "post_id"
     t.integer "tag_id"
     t.datetime "created_at", null: false
