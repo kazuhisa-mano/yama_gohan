@@ -62,4 +62,5 @@ RSpec.configure do |config|
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
   config.include FactoryBot::Syntax::Methods #factory_botのメソッドを使えるようになる
+  config.include Devise::Test::ControllerHelpers, type: :controller #ログインヘルパーが利用可能になる
 end
